@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .correct {
+    @apply border-success bg-success text-white;
+  }
+  .incorrect {
+    @apply border-neutral-300 bg-neutral-300 text-white;
+  }
+  .misplaced {
+    @apply border-warning bg-warning text-white;
+  }
+  .happy {
+    @apply bg-success text-white;
+  }
+  .sad {
+    @apply bg-error text-white;
+  }
+}
