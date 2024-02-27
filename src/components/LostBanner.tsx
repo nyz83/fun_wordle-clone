@@ -1,12 +1,11 @@
-import Banner from './Banner';
+import Banner from "./Banner";
 
-const LostBanner: React.FC<{ answer: string }> = ({
+const LostBanner: React.FC<{ answer: string; handleRestart: () => void }> = ({
   answer,
-}: {
-  answer: string;
+  handleRestart,
 }) => {
   return (
-    <Banner status='sad'>
+    <Banner status="sad" action={handleRestart} actionText="Restart game">
       <p>
         Sorry, the correct answer is <strong>{answer}</strong>.
       </p>

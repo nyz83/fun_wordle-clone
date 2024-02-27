@@ -1,18 +1,38 @@
-import React from 'react';
-import { twMerge } from 'tailwind-merge';
+import React, { useEffect, useRef } from "react";
 
 interface BannerProps {
   status: string;
+  action: () => void;
+  actionText: string;
   children: React.ReactNode;
 }
 
-const Banner: React.FC<BannerProps> = ({ status, children }: BannerProps) => {
-  const className = twMerge(
-    'fixed right-12 bottom-16 w-full max-w-72 mx-auto p-4 text-center will-change-transform animate-slideUp',
-    status,
+const Banner: React.FC<BannerProps> = ({
+  status,
+  children,
+  action,
+  actionText,
+}) => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (buttonRef.current) buttonRef.current.focus();
+  }, []);
+  return (
+    <div
+      className={`fixed bottom-0 left-0 right-0 mx-auto h-32 w-full max-w-xl animate-slideUp space-y-3 p-8 text-center will-change-transform ${status}`}
+    >
+      {children}
+      {action && (
+        <button
+          className="p-2 focus:outline-double focus:outline-gray-300"
+          ref={buttonRef}
+          onClick={action}
+        >
+          {actionText}
+        </button>
+      )}
+    </div>
   );
-
-  return <div className={className}>{children}</div>;
 };
 
 export default Banner;

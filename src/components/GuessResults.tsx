@@ -1,6 +1,6 @@
-import React from 'react';
-import { range } from '../libs/utils';
-import { Guess } from './Guess';
+import React from "react";
+import { range } from "../libs/utils";
+import { Guess } from "./Guess";
 
 interface GuessResultsProps {
   guesses: string[];
@@ -14,11 +14,7 @@ const GuessResults: React.FC<GuessResultsProps> = ({
   return (
     <div>
       {range(6).map((num: number) => (
-        <Guess
-          key={num}
-          value={guesses[num]}
-          answer={answer}
-        />
+        <Guess key={num} value={guesses[num]} answer={answer} />
       ))}
     </div>
   );
